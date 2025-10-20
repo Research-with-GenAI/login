@@ -242,3 +242,47 @@ button#submit:disabled{
   display: block;
   fill: currentColor; /* pakai warna teks agar adaptif tema */
 }
+
+
+/* ===== WhatsApp button ===== */
+.wa-btn{
+  height: calc(var(--field-h) + 2px);
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition: transform var(--transition), filter var(--transition), box-shadow var(--transition);
+  background: linear-gradient(135deg, #25D366, #1EBE5D);
+  color: #0b1220;
+  box-shadow: 0 8px 22px rgba(37, 211, 102, .35);
+  margin-top: 10px;
+}
+
+@media (prefers-color-scheme: dark){
+  .wa-btn{ color: #05130a; } /* tetap kontras di dark mode */
+}
+
+.wa-btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+.wa-btn:active{
+  transform: translateY(0);
+  filter: brightness(.98);
+}
+.wa-btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(37,211,102,.35);
+}
+
+.wa-btn svg{
+  width: 20px; height: 20px;
+  display: block;
+  fill: currentColor;
+}

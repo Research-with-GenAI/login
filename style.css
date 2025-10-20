@@ -175,3 +175,70 @@ button#submit:disabled{
   text-align: center;
   margin-top: 10px;
 }
+
+
+/* ===== OAuth section ===== */
+.oauth{
+  margin-top: 10px;
+}
+
+.divider{
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 10px;
+  margin: 14px 0;
+  color: var(--muted);
+  font-size: .92rem;
+}
+.divider::before,
+.divider::after{
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148,163,184,.35), transparent);
+}
+
+.google-btn{
+  height: calc(var(--field-h) + 2px);
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(148,163,184,.35);
+  background: #ffffff;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition), background var(--transition);
+}
+
+@media (prefers-color-scheme: dark){
+  .google-btn{
+    background: #0b1220;
+    color: var(--text);
+    border-color: rgba(148,163,184,.25);
+  }
+}
+
+.google-btn:hover{
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(2,6,23,.18);
+}
+.google-btn:active{
+  transform: translateY(0);
+  filter: brightness(.98);
+}
+.google-btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+.google-btn svg{
+  width: 20px; height: 20px;
+  display: block;
+  fill: currentColor; /* pakai warna teks agar adaptif tema */
+}

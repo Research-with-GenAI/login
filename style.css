@@ -1,0 +1,177 @@
+/* ============ Base & Theme ============ */
+:root{
+  --bg: #0f172a;            /* slate-900 */
+  --panel: #111827;         /* gray-900 */
+  --panel-2: #0b1220;       /* subtle depth */
+  --text: #e5e7eb;          /* gray-200 */
+  --muted: #9ca3af;         /* gray-400 */
+  --accent: #6366f1;        /* indigo-500 */
+  --accent-2: #8b5cf6;      /* violet-500 */
+  --ring: rgba(99,102,241,.55);
+  --error: #ef4444;         /* red-500 */
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+  --radius: 16px;
+  --gap: 14px;
+  --field-h: 44px;
+  --transition: 180ms ease;
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #f3f4f6;          /* gray-100 */
+    --panel: #ffffff;
+    --panel-2: #f8fafc;
+    --text: #0f172a;        /* slate-900 */
+    --muted: #6b7280;       /* gray-500 */
+    --ring: rgba(99,102,241,.35);
+    --shadow: 0 10px 30px rgba(2,6,23,.12);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ============ Page Layout ============ */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+}
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,.15), transparent 60%),
+    radial-gradient(800px 400px at 110% 10%, rgba(139,92,246,.12), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--panel-2));
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+/* ============ Card ============ */
+.login-container{
+  width: 100%;
+  max-width: 380px;
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid rgba(148,163,184,.18);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(20px, 4vw, 28px);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.login-container::before{
+  /* subtle accent glow */
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto auto;
+  width: 240px; height: 240px;
+  background: radial-gradient(closest-side, rgba(99,102,241,.22), transparent 70%);
+  filter: blur(18px);
+  z-index: -1;
+}
+
+.login-container h2{
+  margin: 0 0 16px 0;
+  font-size: clamp(22px, 2.8vw, 26px);
+  letter-spacing: .2px;
+}
+
+/* ============ Form ============ */
+.form-group{
+  display: grid;
+  gap: 8px;
+  margin-bottom: var(--gap);
+}
+
+label{
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="password"]{
+  height: var(--field-h);
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(148,163,184,.25);
+  background: rgba(2,6,23,.35);
+  color: var(--text);
+  padding: 0 12px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+@media (prefers-color-scheme: light){
+  input[type="text"],
+  input[type="password"]{
+    background: #ffffff;
+  }
+}
+
+input::placeholder{ color: #94a3b8; }
+input:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--ring);
+  background: rgba(2,6,23,.45);
+}
+
+/* Show required invalid quickly but not too aggressively */
+input:required:user-invalid{
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(239,68,68,.25);
+}
+
+/* ============ Button ============ */
+button#submit{
+  height: calc(var(--field-h) + 2px);
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  cursor: pointer;
+  transition: transform var(--transition), filter var(--transition), box-shadow var(--transition);
+  box-shadow: 0 8px 24px rgba(99,102,241,.35);
+}
+
+button#submit:hover{
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+button#submit:active{
+  transform: translateY(0);
+  filter: brightness(.98);
+}
+
+button#submit:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring), 0 8px 24px rgba(99,102,241,.35);
+}
+
+button#submit:disabled{
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* ============ Helpers ============ */
+@media (max-width: 420px){
+  .login-container{ padding: 18px; }
+}
+
+/* Optional small print / footer slots if needed later */
+.small {
+  font-size: .85rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 10px;
+}

@@ -9,7 +9,7 @@ await addCSS("https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.css")
 //end sweet alert import
 
 //config param
-const urlBackend = "https://asia-southeast2-awangga.cloudfunctions.net/gobel/login";
+const urlBackend = "https://asia-southeast2-awangga.cloudfunctions.net/gobel";
 
 
 onClick("submit",PostSignIn);

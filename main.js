@@ -38,6 +38,6 @@ async function runafterGetUsername(result){
     const swalResult = await Swal.fire(result.data.status, result.data.message + " : "+result.data.username, 'success');//success,warning,info,question
     if (swalResult.isConfirmed) {
         // Aksi setelah user menekan OK
-        redirect("./dashboard");
+        redirect("/");
     }
 }
